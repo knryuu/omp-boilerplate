@@ -1,0 +1,6 @@
+gamemodes/*.amx
+scriptfiles/*.amx
+filterscripts/*.amx
+logs/*.log
+logs/plugins/*.log
+log.txt
