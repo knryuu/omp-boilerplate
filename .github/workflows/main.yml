@@ -1,0 +1,22 @@
+name: Compile Pawn Script
+on: [push]
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        
+      - name: Compile script
+        id: compile
+        uses: knryuu/pawn-compiler-action@master  # Replace with your action reference
+        with:
+          input: "gamemodes/main.pwn"
+          include_path: "qawno/include"
+          output: "gamemodes/main.amx"
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: main.amx
+          path: ${{ steps.compile.outputs.compiled_file }}
+          if-no-files-found: error
