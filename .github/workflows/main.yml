@@ -6,14 +6,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        
+
       - name: Compile script
         id: compile
-        uses: knryuu/pawn-compiler-action@master  # Replace with your action reference
+        uses: knryuu/pawn-compiler-action@v1
         with:
           input: "gamemodes/main.pwn"
-          include_path: "qawno/include"
-          output: "gamemodes/main.amx"
+          includes: "qawno/include"
+          flags: "-\\;+ -\\(+ -O2 -d3"
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
